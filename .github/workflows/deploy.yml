@@ -1,0 +1,37 @@
+name: 'Deploy to codesphere'
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+    - closed
+    - opened
+    - reopened
+    - synchronize
+
+permissions:
+  contents: read
+  pull-requests: read
+  deployments: write
+  statuses: write
+
+jobs:
+  deploy:
+    concurrency: codesphere
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        uses: codesphere-cloud/gh-action-deploy@staging
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+            email: ${{ secrets.CS_EMAIL }}
+            password: ${{ secrets.CS_PASSWORD }}
+            team: 'Codesphere PlusServer'
+            plan: 'Boost'
+            env: |
+              ENV=testing
+              EMAIL=${{ secrets.CS_EMAIL }}

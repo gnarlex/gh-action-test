@@ -1,0 +1,16 @@
+prepare:
+  steps:
+    - name: Install node
+      command: sudo -u admin n auto
+    - name: Install deps
+      command: yarn install
+    - name: Build
+      command: yarn build
+test:
+  steps: []
+run:
+  steps:
+  - name: Install node
+    command: sudo -u admin n auto
+  - name: Run
+    command: yarn start
