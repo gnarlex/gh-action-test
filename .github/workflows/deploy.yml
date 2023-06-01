@@ -27,7 +27,7 @@ jobs:
         with:
             email: ${{ secrets.CS_EMAIL }}
             password: ${{ secrets.CS_PASSWORD }}
-            team: 'Codesphere PlusServer'
+            team: 'Codesphere Equinix (fra)'
             plan: 'Boost'
             env: |
               ENV=testing
