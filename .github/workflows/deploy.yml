@@ -27,8 +27,8 @@ jobs:
         with:
             email: ${{ secrets.CS_EMAIL }}
             password: ${{ secrets.CS_PASSWORD }}
-            team: 'Codesphere Equinix (fra)'
-            plan: 'Boost'
+            team: ${{ secrets.CS_TEAM }}
+            plan: 'Micro'
             env: |
               ENV=testing
               EMAIL=${{ secrets.CS_EMAIL }}
